@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/user">
+        <file>isValidUser.sql</file>
+    </qresource>
+</RCC>
