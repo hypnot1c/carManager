@@ -21,8 +21,8 @@ QT += sql
 OTHER_FILES += \
     qml/dropDownList.qml \
     qml/main.qml \
-    db/mainDB.db \
-    isValidUser.sql
+    isValidUser.sql \
+    resources/db/mainDB.db
 
 RESOURCES += \
     UI.qrc \
