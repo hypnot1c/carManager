@@ -1,1 +1,6 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/qml">
+        <file>qml/carManager/dropDownList.qml</file>
+        <file>qml/carManager/main.qml</file>
+    </qresource>
+</RCC>

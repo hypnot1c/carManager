@@ -15,3 +15,14 @@ SOURCES += main.cpp
 # Please do not modify the following two lines. Required for deployment.
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
+
+QT += sql
+
+OTHER_FILES += \
+    qml/dropDownList.qml \
+    qml/main.qml \
+    db/mainDB.db \
+    resources/db/mainDB.db
+
+RESOURCES += \
+    UI.qrc
