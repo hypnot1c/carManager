@@ -1,11 +1,12 @@
 #include <QtGui/QGuiApplication>
 #include <QtSql>
+#include <QtCrypto>
 #include "qtquick2applicationviewer.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
+    QCA::Initializer init;
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("resources/db/mainDB.db");
     if(!db.open())
