@@ -10,7 +10,9 @@ QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    auth.cpp
+    encryption.cpp \
+    sqlservice.cpp \
+    authState.cpp
 
 # Installation path
 # target.path =
@@ -26,11 +28,15 @@ CONFIG += crypto
 OTHER_FILES += \
     qml/dropDownList.qml \
     qml/main.qml \
-    isValidUser.sql
+    isValidUser.sql \
+    resources/image/lineedit.png \
+    resources/image/lineedit.sci
 
 RESOURCES += \
     UI.qrc \
     SQL.qrc
 
 HEADERS += \
-    auth.h
+    encryption.h \
+    sqlservice.h \
+    authState.h

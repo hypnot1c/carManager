@@ -1,31 +1,24 @@
 #include <QtGui/QGuiApplication>
-#include <QtSql>
-#include <QtCrypto>
+#include <QQuickItem>
+#include <QSettings>
+
+#include "encryption.h"
+#include "authState.h"
 #include "qtquick2applicationviewer.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QCA::Initializer init;
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("resources/db/mainDB.db");
-    if(!db.open())
-      return -1;
-
-    QSqlQuery qwr;
-
-    //qwr.prepare(" SELECT * FROM User ");
-    //qwr.bindValue(":login", "ahmed_@mail.ru");
-    //qwr.bindValue(":password", "123456");
-
-    bool res = qwr.exec(" SELECT * FROM User ");
-    QSqlError err = qwr.lastError();
-    if(!res)
-      return -2;
+    QSettings _settings(QSettings::IniFormat, QSettings::UserScope, "DeveloperSoft", "carManager");
+    _settings.setValue("dbPath", "resources/db/mainDB.db");
 
     QtQuick2ApplicationViewer viewer;
     viewer.setSource(QUrl("qrc:/qml/qml/carManager/main.qml"));
     viewer.showExpanded();
+
+    AuthState auth;
+    QObject *form = viewer.rootObject();
+    QObject::connect(form, SIGNAL(authorizing(QString, QString)), &auth, SLOT(authUser(QString,QString)));
 
     return app.exec();
 }
