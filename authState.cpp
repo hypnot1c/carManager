@@ -11,7 +11,7 @@ bool AuthState::authUser(QString login, QString password)
 {
   QHash<QString, QVariant> _pars;
   _pars.insert("login", login);
-  _pars.insert("password",  Encryption::encrypt(password));
+  //_pars.insert("password",  Encryption::encrypt(password));
   QList<QHash<QString, QVariant>> _res = SQLservice::executSQLreader(
         QString("SELECT password FROM User WHERE login = :login AND password = :password"), _pars);
 

@@ -6,12 +6,13 @@
 class Encryption
 {
 private:
-  static QByteArray _symmetricKey;
+  QByteArray _symmetricKey;
+  QCA::Initializer _initator;
+  QByteArray getSymmetricKey();
 public:
   Encryption();
-  static QByteArray getSymmetricKey();
-  static QByteArray encrypt (const QString &input);
-  static QString decrypt (QByteArray &input);
+  QByteArray encrypt (const QString &input);
+  QString decrypt (QByteArray &input);
 };
 
 #endif // ENCRYPTION_H

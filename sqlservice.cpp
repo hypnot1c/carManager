@@ -7,6 +7,7 @@ SQLservice::SQLservice()
 QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query, QHash<QString, QVariant> params = QHash<QString, QVariant>())
 {
   QList<QHash<QString, QVariant>> _result;
+
   QSqlDatabase _db = QSqlDatabase::addDatabase("QSQLITE");
   QSettings _settings(QSettings::IniFormat, QSettings::UserScope, "DeveloperSoft", "carManager");
 
@@ -32,5 +33,7 @@ QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query, QHash
       row.insert(rec.fieldName(_i), qwr.value(_i));
     _result.append(row);
   }
+  _db.close();
+  _db.removeDatabase(QSqlDatabase::defaultConnection);
   return _result;
 }
