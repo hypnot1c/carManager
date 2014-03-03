@@ -4,7 +4,7 @@ SQLservice::SQLservice()
 {
 }
 
-QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query)
+QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query, QHash<QString, QVariant> params = QHash<QString, QVariant>())
 {
   QList<QHash<QString, QVariant>> _result;
   QSqlDatabase _db = QSqlDatabase::addDatabase("QSQLITE");
@@ -17,12 +17,14 @@ QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query)
   QSqlQuery qwr;
   qwr.prepare(query);
 
+  for(auto _par : params.keys())
+    qwr.bindValue(":" + _par, params.value(_par));
+
   bool _res = qwr.exec();
   if(!_res)
     return _result;
 
   QSqlRecord rec = qwr.record();
-  QByteArray pass;
   while(qwr.next())
   {
     QHash<QString, QVariant> row;

@@ -11,7 +11,7 @@ public:
     explicit AuthState(QObject *parent = 0);
 
 signals:
-
+  void authResult(QVariant isSuccess);
 public slots:
   bool authUser(QString login, QString password);
 };

@@ -11,8 +11,7 @@ class SQLservice
 {
 public:
   SQLservice();
-  static QList<QHash<QString, QVariant>> executSQLreader(QString query);
-  static QList<QHash<QString, QVariant>> executSQLreader(QString query, QMap<QString, QVariant> params);
+  static QList<QHash<QString, QVariant>> executSQLreader(QString query, QHash<QString, QVariant> params);
 };
 
 #endif // SQLSERVICE_H

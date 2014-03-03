@@ -8,6 +8,10 @@ Rectangle {
 
     signal authorizing(string login, string password)
 
+    function authResult(isSuccess) {
+        authResultText.text = isSuccess ? "Success" : "Fail"
+    }
+
     ColumnLayout {
         anchors.centerIn: parent
         spacing: 4
@@ -54,6 +58,12 @@ Rectangle {
             text: "Sign in"
             tooltip: "Sign into programm"
             onClicked: authorizing(userEmail.inputText, userPassword.inputText)
+        }
+    }
+    RowLayout {
+        Text {
+            id: authResultText
+            text: "Please login..."
         }
     }
     }

@@ -2,7 +2,6 @@
 #include <QQuickItem>
 #include <QSettings>
 
-#include "encryption.h"
 #include "authState.h"
 #include "qtquick2applicationviewer.h"
 
@@ -19,6 +18,7 @@ int main(int argc, char *argv[])
     AuthState auth;
     QObject *form = viewer.rootObject();
     QObject::connect(form, SIGNAL(authorizing(QString, QString)), &auth, SLOT(authUser(QString,QString)));
+    QObject::connect(&auth, SIGNAL(authResult(QVariant)), form, SLOT(authResult(QVariant)));
 
     return app.exec();
 }
