@@ -3,14 +3,16 @@
 
 #include <QtCrypto>
 
+using namespace QCA;
+
 class Encryption
 {
 private:
   QByteArray _symmetricKey;
-  QCA::Initializer _initator;
+  Initializer _initator;
   QByteArray getSymmetricKey();
 public:
-  Encryption();
+  Encryption(Initializer initiator);
   QByteArray encrypt (const QString &input);
   QString decrypt (QByteArray &input);
 };

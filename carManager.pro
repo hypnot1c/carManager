@@ -12,7 +12,8 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp \
     encryption.cpp \
     sqlservice.cpp \
-    authState.cpp
+    authState.cpp \
+    authThread.cpp
 
 # Installation path
 # target.path =
@@ -39,4 +40,5 @@ RESOURCES += \
 HEADERS += \
     encryption.h \
     sqlservice.h \
-    authState.h
+    authState.h \
+    authThread.h
