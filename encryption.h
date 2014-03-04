@@ -12,7 +12,7 @@ private:
   Initializer _initator;
   QByteArray getSymmetricKey();
 public:
-  Encryption(Initializer initiator);
+  Encryption();
   QByteArray encrypt (const QString &input);
   QString decrypt (QByteArray &input);
 };

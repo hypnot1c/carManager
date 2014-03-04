@@ -1,11 +1,10 @@
 #include "encryption.h"
 
-Encryption::Encryption(Initializer initiator)
+Encryption::Encryption()
 {
   if (QCA::isSupported("aes128-cbc-pkcs7"))
   {
       this->_symmetricKey = QByteArray("b0572e7c2e5bbc12ad20a03f39791607");
-      this->_initator = initiator;
   }
 }
 

@@ -4,22 +4,29 @@
 #include <QObject>
 #include <QThread>
 
+#include "encryption.h"
 #include "authState.h"
 
-class AuthThread : public QThread
+class AuthThread : public QObject
 {
   Q_OBJECT
 public:
-  explicit AuthThread(QObject *form, QObject *parent = 0);
+  AuthThread(const QString &login, const QString &password);
 
-private:
-  AuthState *_auth;
-  QObject *_form;
+signals:
+  void authResult(QVariant isSuccess);
 
 public slots:
-  bool beginUserAuth(QString, QString);
+  void proccess();
+  void end();
+
 protected:
   void run();
+
+private:
+  QString _login;
+  QString _password;
+  Encryption *_enc;
 };
 
 #endif // AUTHTHREAD_H

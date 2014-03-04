@@ -1,22 +1,19 @@
 #include "authState.h"
+#include "auththread.h"
 
-AuthState::AuthState(Encryption &enc, QObject *parent) :
-    QObject(parent)
+AuthState::AuthState(QObject* form)
 {
-  this->enc = &enc;
+  _form = form;
 }
 
-bool AuthState::authUser(QString login, QString password)
+bool AuthState::beginAuthUser(QString login, QString password)
 {
-  QThread th;
-  th.start();
-  QHash<QString, QVariant> _pars;
-  _pars.insert("login", login);
-  _pars.insert("password",  this->enc->encrypt(password));
-  QList<QHash<QString, QVariant>> _res = SQLservice::executSQLreader(
-        QString("SELECT password FROM User WHERE login = :login AND password = :password"), _pars);
-
-  bool _isSucess = !_res.isEmpty();
-  emit AuthState::authResult(_isSucess);
-  return _isSucess;
+   AuthThread* auth = new AuthThread(login, password);
+   QThread* thread = new QThread();
+   auth->moveToThread(thread);
+   connect(thread, SIGNAL(started()), auth, SLOT(proccess()));
+   connect(auth, SIGNAL(authResult(QVariant)), thread, SLOT(quit()));
+   connect(auth, SIGNAL(authResult(QVariant)), _form, SLOT(authResult(QVariant)));
+   thread->start();
+  return true;
 }
