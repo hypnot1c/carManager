@@ -5,11 +5,11 @@ AuthThread::AuthThread(const QString &login, const QString &password)
 {
   _login = login;
   _password = password;
-  _enc = new Encryption();
 }
 
 void AuthThread::proccess() {
     QHash<QString, QVariant> _pars;
+    _enc = new Encryption();
     _pars.insert("login", _login);
     _pars.insert("password",  _enc->encrypt(_password));
     QList<QHash<QString, QVariant>> _res = SQLservice::executSQLreader(
@@ -20,5 +20,6 @@ void AuthThread::proccess() {
 }
 
 void AuthThread::end() {
-
+  if(_enc != NULL)
+    delete _enc;
 }

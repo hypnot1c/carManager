@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QSettings _settings(QSettings::IniFormat, QSettings::UserScope, "DeveloperSoft", "carManager");
     _settings.setValue("dbPath", "resources/db/mainDB.db");
-    Encryption _crp = Encryption();
 
     QtQuick2ApplicationViewer viewer;
     viewer.setSource(QUrl("qrc:/qml/qml/carManager/main.qml"));

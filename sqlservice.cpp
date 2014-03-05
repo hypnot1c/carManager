@@ -4,18 +4,24 @@ SQLservice::SQLservice()
 {
 }
 
+QSqlDatabase SQLservice::getDatabase(const QString &connectionName)
+{
+  return QSqlDatabase::contains(connectionName) ? QSqlDatabase::database(connectionName) : QSqlDatabase::addDatabase("QSQLITE", connectionName);
+}
+
 QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query, QHash<QString, QVariant> params = QHash<QString, QVariant>())
 {
-  QList<QHash<QString, QVariant>> _result;
+  QList<QHash<QString, QVariant> > _result;
 
-  QSqlDatabase _db = QSqlDatabase::addDatabase("QSQLITE");
+{
+  QSqlDatabase _db = SQLservice::getDatabase();
   QSettings _settings(QSettings::IniFormat, QSettings::UserScope, "DeveloperSoft", "carManager");
 
   _db.setDatabaseName(_settings.value("dbPath").toString());
   if(!_db.open())
     return _result;
 
-  QSqlQuery qwr;
+  QSqlQuery qwr(_db);
   qwr.prepare(query);
 
   for(auto _par : params.keys())
@@ -34,6 +40,6 @@ QList<QHash<QString, QVariant>> SQLservice::executSQLreader(QString query, QHash
     _result.append(row);
   }
   _db.close();
-  _db.removeDatabase(QSqlDatabase::defaultConnection);
+  }
   return _result;
 }

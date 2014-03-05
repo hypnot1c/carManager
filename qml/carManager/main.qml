@@ -9,62 +9,75 @@ Rectangle {
     signal authorizing(string login, string password)
 
     function authResult(isSuccess) {
+        login.enabled = true;
         authResultText.text = isSuccess ? "Success" : "Fail"
     }
 
-    ColumnLayout {
-        anchors.centerIn: parent
+    Column {
         spacing: 4
-
-    RowLayout {
-    Text {
-        text: "Login"
-        Layout.fillWidth: true;
-
-        width: 100
-    }
-
-    LineInput {
-        id: userEmail
-        width: 140
-        focus: true
-        hintText: "Enter e-mail..."
-        KeyNavigation.tab: userPassword
-    }
-    }
-
-    RowLayout {
-        Text {
-            text: "Password"
-            Layout.fillWidth: true;
-            width: 100
-        }
-
-    LineInput {
-        id: userPassword
-        width: 140
-        focus: true
-        hintText: "Enter password..."
-        KeyNavigation.tab: userEmail
-        echoMode: TextInput.Password
-    }
-    }
-
-    RowLayout {
-        anchors.right: parent.right
-        Button {
+        anchors.centerIn: parent
+        Row {
+            anchors.left: parent.left;
             anchors.right: parent.right
-            id: login
-            text: "Sign in"
-            tooltip: "Sign into programm"
-            onClicked: authorizing(userEmail.inputText, userPassword.inputText)
-        }
-    }
-    RowLayout {
+            width: parent.width
         Text {
-            id: authResultText
-            text: "Please login..."
+            text: "Login"
+            width: 50
         }
-    }
+
+        LineInput {
+            id: userEmail
+            width: 140
+            focus: true
+            hintText: "Enter e-mail..."
+            KeyNavigation.tab: userPassword
+        }
+        }
+
+        Row {
+            anchors.right: parent.right
+            Text {
+                text: "Password"
+                width: 50
+            }
+
+        LineInput {
+            id: userPassword
+            width: 140
+            focus: true
+            hintText: "Enter password..."
+            KeyNavigation.tab: userEmail
+            echoMode: TextInput.Password
+        }
+        }
+
+        Row {
+            anchors.right: parent.right
+            Button {
+                id: login
+                text: "Sign in"
+                tooltip: "Sign into programm"
+                onClicked: {
+                    login.enabled = false;
+                    authorizing(userEmail.inputText, userPassword.inputText);
+                }
+            }
+        }
+        Row {
+
+            ProgressBar {
+                 id: pb2
+                 indeterminate: true
+                 width: 100
+                 height: 12
+                 visible: true
+             }
+
+            Text {
+                id: authResultText
+                text: "Please login..."
+            }
+        }
+
     }
 }
