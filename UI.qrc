@@ -11,5 +11,6 @@
         <file>resources/image/car.png</file>
         <file>resources/image/wrench.png</file>
         <file>resources/image/proccess.png</file>
+        <file>resources/image/loading.gif</file>
     </qresource>
 </RCC>
