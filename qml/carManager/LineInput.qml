@@ -15,11 +15,13 @@ FocusScope {
 
     TextInput {
         id: input
-        clip: true
+        anchors.centerIn: parent
+        width: parent.width-16
         color: "#151515"; selectionColor: "green"
         font.pixelSize: 16; font.bold: true
-        width: parent.width-16
-        anchors.centerIn: parent
+        selectByMouse: true
+        mouseSelectionMode: TextInput.SelectCharacters
+        clip: true
         focus: true
     }
     Text {

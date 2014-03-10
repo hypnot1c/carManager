@@ -1,23 +1,39 @@
 import QtQuick 2.0
-import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 
 Rectangle {
-    width: 360
-    height: 360
+  width: 360
+  height: 300
 
-    signal authorizing(string login, string password)
+  signal authorizing(string login, string password)
 
-    function authResult(isSuccess) {
-        login.enabled = true;
-        authResultText.text = isSuccess ? "Success" : "Fail"
-    }
-    Item {
+  function authResult(isSuccess) {
+    login.enabled = true;
+    pb2.visible = false;
+    //authResultText.text = isSuccess ? "Success" : "Fail"
+  }
+  Item {
+    id: loginForm
+    anchors.centerIn: parent
+    width: 200
+    height: 200
+
+    Column {
       anchors.centerIn: parent
-      width: 200
-      height: parent.height
-      Column {
-        anchors.centerIn: parent
+      spacing: 4
+      Row {
+        width: parent.width
+        height: 66
+        Item {
+          width: parent.width
+          Image {
+            id: car
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "qrc:/img/resources/image/car.png"
+          }
+        }
+      }
+
       Row {
         Text {
           text: "Login"
@@ -51,40 +67,47 @@ Rectangle {
           echoMode: TextInput.Password
         }
       }
-  }
-//        Row {
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            width: parent.width
-//            Button {
-//                id: login
-//                text: "Sign in"
-//                tooltip: "Sign into programm"
-//                onClicked: {
-//                    login.enabled = false;
-//                    authorizing(userEmail.inputText, userPassword.inputText);
-//                }
-//            }
-//        }
-//        Row
-//        {
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            width: parent.width
-//            ProgressBar {
-//                 id: pb2
-//                 indeterminate: true
-//                 width: parent.width
-//                 height: 12
-//                 visible: true
-//             }
-//        }
-
-//        Row {
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            width: parent.width
-//            Text {
-//                id: authResultText
-//                text: "Please login..."
-//            }
-//        }
+      Row {
+        width: parent.width
+        height: 25
+        Item {
+          width: parent.width
+          height: parent.height
+          Button {
+            id: login
+            text: "Sign in"
+            anchors.right: parent.right
+            width: 80
+            tooltip: "Sign into programm"
+            onClicked: {
+              login.enabled = false;
+              pb2.visible = true;
+              authorizing(userEmail.inputText, userPassword.inputText);
+            }
+          }
+        }
+      }
     }
+    Item {
+      width: parent.width
+      height: 25
+      anchors.top: loginForm.bottom
+      ProgressBar {
+        id: pb2
+        anchors.horizontalCenter: parent.horizontalCenter
+        indeterminate: true
+        width: parent.width + 30
+        height: 12
+        visible: false
+      }
+    }
+    //        Row {
+    //            anchors.horizontalCenter: parent.horizontalCenter
+    //            width: parent.width
+    //            Text {
+    //                id: authResultText
+    //                text: "Please login..."
+    //            }
+    //        }
+  }
 }
