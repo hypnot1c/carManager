@@ -31,7 +31,8 @@ OTHER_FILES += \
     qml/main.qml \
     isValidUser.sql \
     resources/image/lineedit.png \
-    resources/image/lineedit.sci
+    resources/image/lineedit.sci \
+    regForm.qml
 
 RESOURCES += \
     UI.qrc \
