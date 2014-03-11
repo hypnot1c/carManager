@@ -1,9 +1,9 @@
 # Add more folders to ship with the application, here
-folder_01.source = qml/carManager
-folder_01.target = qml
-folder_02.source = resources/db
-folder_02.target = resources
-DEPLOYMENTFOLDERS = folder_01 folder_02
+#folder_01.source = qml/carManager
+#folder_01.target = qml
+folder_02.source = db
+folder_02.target =
+DEPLOYMENTFOLDERS = folder_02
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
@@ -26,20 +26,25 @@ QT += sql
 
 CONFIG += crypto
 
-OTHER_FILES += \
-    qml/dropDownList.qml \
-    qml/main.qml \
-    isValidUser.sql \
-    resources/image/lineedit.png \
-    resources/image/lineedit.sci \
-    regForm.qml
-
 RESOURCES += \
-    UI.qrc \
-    SQL.qrc
+    UI.qrc
 
 HEADERS += \
     encryption.h \
     sqlservice.h \
     authState.h \
     authThread.h
+
+OTHER_FILES += \
+    qml/carManager/regForm.qml \
+    qml/carManager/dropDownList.qml \
+    qml/carManager/LineInput.qml \
+    qml/carManager/main.qml \
+    qml/carManager/TextArea.qml \
+    image/loading.gif \
+    image/addProfile.png \
+    image/car.png \
+    image/lineedit.png \
+    image/proccess.png \
+    image/wrench.png \
+    image/lineedit.sci

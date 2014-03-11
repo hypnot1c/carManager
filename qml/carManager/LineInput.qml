@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 
 FocusScope {
     property alias inputText: input.text
@@ -9,7 +9,7 @@ FocusScope {
 
     width: 180; height: 28
     BorderImage {
-        source: "qrc:/img/resources/image/lineedit.sci"
+        source: "qrc:/img/image/lineedit.sci"
         anchors.fill: parent
     }
 

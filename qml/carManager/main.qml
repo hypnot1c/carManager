@@ -1,7 +1,8 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import QtQuick.Controls 1.1
 
 Rectangle {
+  id: root
   width: 360
   height: 300
 
@@ -12,6 +13,21 @@ Rectangle {
     pb2.visible = false;
     //authResultText.text = isSuccess ? "Success" : "Fail"
   }
+
+  Image {
+    id: addUser
+    anchors.right: parent.right
+    source: "qrc:/img/image/addProfile.png"
+    MouseArea{
+      anchors.fill: parent
+      onClicked: {
+        var comp = Qt.createComponent("qrc:/qml/qml/carManager/regForm.qml");
+        var win = comp.createObject(root);
+        win.show();
+      }
+    }
+  }
+
   Item {
     id: loginForm
     anchors.centerIn: parent
@@ -29,7 +45,7 @@ Rectangle {
           Image {
             id: car
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "qrc:/img/resources/image/car.png"
+            source: "qrc:/img/image/car.png"
           }
         }
       }
@@ -101,13 +117,5 @@ Rectangle {
         visible: false
       }
     }
-    //        Row {
-    //            anchors.horizontalCenter: parent.horizontalCenter
-    //            width: parent.width
-    //            Text {
-    //                id: authResultText
-    //                text: "Please login..."
-    //            }
-    //        }
   }
 }

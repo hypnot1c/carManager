@@ -1,16 +1,18 @@
 <RCC>
     <qresource prefix="/qml">
         <file>qml/carManager/dropDownList.qml</file>
-        <file>qml/carManager/main.qml</file>
         <file>qml/carManager/LineInput.qml</file>
+        <file>qml/carManager/main.qml</file>
         <file>qml/carManager/TextArea.qml</file>
+        <file>qml/carManager/regForm.qml</file>
     </qresource>
     <qresource prefix="/img">
-        <file>resources/image/lineedit.png</file>
-        <file>resources/image/lineedit.sci</file>
-        <file>resources/image/car.png</file>
-        <file>resources/image/wrench.png</file>
-        <file>resources/image/proccess.png</file>
-        <file>resources/image/loading.gif</file>
+        <file>image/car.png</file>
+        <file>image/lineedit.png</file>
+        <file>image/lineedit.sci</file>
+        <file>image/loading.gif</file>
+        <file>image/proccess.png</file>
+        <file>image/wrench.png</file>
+        <file>image/addProfile.png</file>
     </qresource>
 </RCC>
