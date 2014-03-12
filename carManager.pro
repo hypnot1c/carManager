@@ -36,7 +36,6 @@ HEADERS += \
     authThread.h
 
 OTHER_FILES += \
-    qml/carManager/regForm.qml \
     qml/carManager/dropDownList.qml \
     qml/carManager/LineInput.qml \
     qml/carManager/main.qml \
@@ -47,4 +46,7 @@ OTHER_FILES += \
     image/lineedit.png \
     image/proccess.png \
     image/wrench.png \
-    image/lineedit.sci
+    image/lineedit.sci \
+    qml/carManager/regWindow.qml \
+    qml/carManager/regForm.qml \
+    qml/carManager/infoForm.qml

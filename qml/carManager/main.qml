@@ -21,7 +21,7 @@ Rectangle {
     MouseArea{
       anchors.fill: parent
       onClicked: {
-        var comp = Qt.createComponent("qrc:/qml/qml/carManager/regForm.qml");
+        var comp = Qt.createComponent("qrc:/qml/qml/carManager/regWindow.qml");
         var win = comp.createObject(root);
         win.show();
       }

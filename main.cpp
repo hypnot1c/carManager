@@ -3,8 +3,6 @@
 #include <QSettings>
 
 #include "authState.h"
-#include "authThread.h"
-#include "encryption.h"
 #include "qtquick2applicationviewer.h"
 
 int main(int argc, char *argv[])

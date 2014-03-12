@@ -4,6 +4,8 @@
         <file>qml/carManager/LineInput.qml</file>
         <file>qml/carManager/main.qml</file>
         <file>qml/carManager/TextArea.qml</file>
+        <file>qml/carManager/regWindow.qml</file>
+        <file>qml/carManager/infoForm.qml</file>
         <file>qml/carManager/regForm.qml</file>
     </qresource>
     <qresource prefix="/img">
