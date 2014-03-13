@@ -1,6 +1,9 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 
+import "components"
+import "windows"
+
 Rectangle {
   id: root
   width: 360
@@ -11,7 +14,6 @@ Rectangle {
   function authResult(isSuccess) {
     login.enabled = true;
     pb2.visible = false;
-    //authResultText.text = isSuccess ? "Success" : "Fail"
   }
 
   Image {
@@ -21,7 +23,7 @@ Rectangle {
     MouseArea{
       anchors.fill: parent
       onClicked: {
-        var comp = Qt.createComponent("qrc:/qml/qml/carManager/regWindow.qml");
+        var comp = Qt.createComponent("qrc:/qml/qml/carManager/windows/regWindow.qml");
         var win = comp.createObject(root);
         win.show();
       }

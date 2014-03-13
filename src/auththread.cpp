@@ -1,5 +1,4 @@
 #include "auththread.h"
-#include "authState.h"
 
 AuthThread::AuthThread(const QString &login, const QString &password)
 {

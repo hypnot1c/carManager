@@ -2,7 +2,7 @@
 #include <QQuickItem>
 #include <QSettings>
 
-#include "authState.h"
+#include "src/authState.h"
 #include "qtquick2applicationviewer.h"
 
 int main(int argc, char *argv[])

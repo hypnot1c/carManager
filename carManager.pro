@@ -10,10 +10,10 @@ QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    encryption.cpp \
-    sqlservice.cpp \
-    authState.cpp \
-    authThread.cpp
+    src/authState.cpp \
+    src/auththread.cpp \
+    src/encryption.cpp \
+    src/sqlservice.cpp
 
 # Installation path
 # target.path =
@@ -30,16 +30,16 @@ RESOURCES += \
     UI.qrc
 
 HEADERS += \
-    encryption.h \
-    sqlservice.h \
-    authState.h \
-    authThread.h
+    src/authState.h \
+    src/auththread.h \
+    src/encryption.h \
+    src/sqlservice.h
 
 OTHER_FILES += \
-    qml/carManager/dropDownList.qml \
-    qml/carManager/LineInput.qml \
+    qml/carManager/components/dropDownList.qml \
+    qml/carManager/components/LineInput.qml \
+    qml/carManager/components/TextArea.qml \
     qml/carManager/main.qml \
-    qml/carManager/TextArea.qml \
     image/loading.gif \
     image/addProfile.png \
     image/car.png \
@@ -47,6 +47,6 @@ OTHER_FILES += \
     image/proccess.png \
     image/wrench.png \
     image/lineedit.sci \
-    qml/carManager/regWindow.qml \
-    qml/carManager/regForm.qml \
-    qml/carManager/infoForm.qml
+    qml/carManager/windows/regWindow.qml \
+    qml/carManager/forms/regForm.qml \
+    qml/carManager/forms/infoForm.qml

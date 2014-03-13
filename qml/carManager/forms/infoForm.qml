@@ -1,5 +1,7 @@
 import QtQuick 2.2
 
+import "../components"
+
 Item {
   id: infoForm
   anchors.centerIn: parent
