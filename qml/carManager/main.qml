@@ -69,7 +69,6 @@ Rectangle {
       }
 
       Row {
-        width: parent.width
         Text {
           text: "Password"
           font.pointSize: 14

@@ -4,12 +4,12 @@ import "../components"
 
 Item {
   id: regForm
-  anchors.centerIn: parent
-  width: 500
-  height: 200
+  width: 300
+  height: 100
 
   Column {
-    anchors.centerIn: parent
+    width: parent.width
+    height: parent.height
     spacing: 4
 
     Row {

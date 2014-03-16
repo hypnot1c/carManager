@@ -1,4 +1,5 @@
 import QtQuick 2.2
+import QtQuick.Controls 1.1
 
 import "../components"
 
@@ -12,20 +13,8 @@ Item {
     anchors.centerIn: parent
     spacing: 4
 
-    Row {
-      Text {
-        text: "Login"
-        font.pointSize: 14
-        width: 150
-      }
-
-      LineInput {
-        id: userEmail
-        width: 140
-        focus: true
-        hintText: "Enter e-mail..."
-        KeyNavigation.tab: userPassword
-      }
+    ComboBox {
+      width: 100
     }
   }
 }
