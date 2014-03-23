@@ -9,7 +9,6 @@ Window {
   width: 500
   height: 300
   modality: Qt.ApplicationModal
-
   Rectangle {
     id: steps
     width: parent.width
@@ -58,17 +57,17 @@ Window {
       width: 80
 
       onClicked: ParallelAnimation {
-        NumberAnimation {
+        PropertyAnimation {
           target: regItm
           property: "x"
           to: -70
-          duration: 1000
+          duration: 600
         }
         PropertyAnimation {
           target: regItm
           property: "opacity"
           to: 0.0
-          duration: 1000
+          duration: 600
         }
         onStopped: {
           reg.setSource("qrc:/qml/qml/carManager/forms/infoForm.qml");

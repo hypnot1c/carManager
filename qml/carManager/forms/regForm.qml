@@ -29,7 +29,6 @@ Item {
     }
 
     Row {
-      width: parent.width
       Text {
         text: "Password"
         font.pointSize: 14
@@ -47,7 +46,6 @@ Item {
     }
 
     Row {
-      width: parent.width
       Text {
         text: "Password again"
         font.pointSize: 14

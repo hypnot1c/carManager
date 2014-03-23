@@ -1,121 +1,71 @@
 import QtQuick 2.2
+import QtQuick.Window 2.1
 import QtQuick.Controls 1.1
 
 import "components"
 import "windows"
 
-Rectangle {
+ApplicationWindow {
   id: root
-  width: 360
-  height: 300
+  width: 700
+  height: 500
+  visible: true
 
-  signal authorizing(string login, string password)
-
-  function authResult(isSuccess) {
-    login.enabled = true;
-    pb2.visible = false;
-  }
-
-  Image {
-    id: addUser
-    anchors.right: parent.right
-    source: "qrc:/img/image/addProfile.png"
-    MouseArea{
-      anchors.fill: parent
-      onClicked: {
-        var comp = Qt.createComponent("qrc:/qml/qml/carManager/windows/regWindow.qml");
-        var win = comp.createObject(root);
-        win.show();
-      }
+  ListModel {
+    id: menuModel
+    ListElement {
+      name: "Service"
+    }
+    ListElement {
+      name: "Fuel"
+    }
+    ListElement {
+      name: "Statistic"
+    }
+    ListElement {
+      name: "Notifys"
     }
   }
-
-  Item {
-    id: loginForm
-    anchors.centerIn: parent
-    width: 200
-    height: 200
-
-    Column {
-      anchors.centerIn: parent
-      spacing: 4
-      Row {
-        width: parent.width
-        height: 66
-        Item {
-          width: parent.width
-          Image {
-            id: car
-            anchors.horizontalCenter: parent.horizontalCenter
-            source: "qrc:/img/image/car.png"
+  Component {
+      id: highlight
+      Rectangle {
+          width: 180; height: 40
+          color: "lightsteelblue"; radius: 5
+          //y: lst.currentItem.y
+          Behavior on y {
+              SpringAnimation {
+                  spring: 3
+                  damping: 0.2
+              }
           }
-        }
       }
+  }
+  Rectangle {
+    id: lst
+    anchors.fill: parent
+    ListView {
+      width: 200
+      height: 200
+      spacing: 3
 
-      Row {
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.topMargin: 80
+      anchors.leftMargin: 50
+
+      model: menuModel
+      currentIndex: 0
+      highlight: highlight
+
+      delegate: Rectangle {
+        width: 140
+        height: 30
+        radius: 4
+        border.color: "Gray"
+        border.width: 2
         Text {
-          text: "Login"
-          font.pointSize: 14
-          width: 100
+          text: name
         }
-
-        LineInput {
-          id: userEmail
-          width: 140
-          focus: true
-          hintText: "Enter e-mail..."
-          KeyNavigation.tab: userPassword
-        }
-      }
-
-      Row {
-        Text {
-          text: "Password"
-          font.pointSize: 14
-          width: 100
-        }
-
-        LineInput {
-          id: userPassword
-          width: 140
-          focus: true
-          hintText: "Enter password..."
-          KeyNavigation.tab: userEmail
-          echoMode: TextInput.Password
-        }
-      }
-      Row {
-        width: parent.width
-        height: 25
-        Item {
-          width: parent.width
-          height: parent.height
-          Button {
-            id: login
-            text: "Sign in"
-            anchors.right: parent.right
-            width: 80
-            tooltip: "Sign into programm"
-            onClicked: {
-              login.enabled = false;
-              pb2.visible = true;
-              authorizing(userEmail.inputText, userPassword.inputText);
-            }
-          }
-        }
-      }
-    }
-    Item {
-      width: parent.width
-      height: 25
-      anchors.top: loginForm.bottom
-      ProgressBar {
-        id: pb2
-        anchors.horizontalCenter: parent.horizontalCenter
-        indeterminate: true
-        width: parent.width + 30
-        height: 12
-        visible: false
       }
     }
   }

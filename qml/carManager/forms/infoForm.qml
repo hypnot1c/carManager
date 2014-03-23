@@ -13,8 +13,16 @@ Item {
     anchors.centerIn: parent
     spacing: 4
 
-    ComboBox {
-      width: 100
+    Row {
+      Text {
+        text: "Login"
+        font.pointSize: 14
+        width: 100
+      }
+
+      ComboBox {
+        width: 100
+      }
     }
   }
 }

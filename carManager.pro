@@ -49,4 +49,6 @@ OTHER_FILES += \
     image/lineedit.sci \
     qml/carManager/windows/regWindow.qml \
     qml/carManager/forms/regForm.qml \
-    qml/carManager/forms/infoForm.qml
+    qml/carManager/forms/infoForm.qml \
+    qml/carManager/windows/mainWindow.qml \
+    qml/carManager/windows/loginWindow.qml
