@@ -16,5 +16,10 @@
         <file>image/proccess.png</file>
         <file>image/wrench.png</file>
         <file>image/addProfile.png</file>
+        <file>image/tool.png</file>
+        <file>image/fuel.png</file>
+        <file>image/chart.png</file>
+        <file>image/notification.png</file>
+        <file>image/engine.ico</file>
     </qresource>
 </RCC>

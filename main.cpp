@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine eng;
     eng.load(QUrl("qrc:/qml/qml/carManager/main.qml"));
-
 //    QtQuick2ApplicationViewer viewer;
 //    viewer.setSource(QUrl("qrc:/qml/qml/carManager/main.qml"));
 //    viewer.showExpanded();
@@ -23,6 +22,7 @@ int main(int argc, char *argv[])
     //QObject *form = eng.rootObjects().value(0);
     //AuthState* auth = new AuthState(form);
     //QObject::connect(form, SIGNAL(authorizing(QString, QString)), auth, SLOT(beginAuthUser(QString,QString)), Qt::QueuedConnection);
+  //app.set setIcon(QIcon("qrc:/img/image/engine.ico"));
 
     int res = app.exec();
     return res;

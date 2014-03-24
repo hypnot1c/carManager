@@ -11,39 +11,33 @@ ApplicationWindow {
   height: 500
   visible: true
 
+
+
   ListModel {
     id: menuModel
     ListElement {
       name: "Service"
+      image: "qrc:/img/image/wrench.png"
     }
     ListElement {
       name: "Fuel"
+      image: "qrc:/img/image/fuel.png"
     }
     ListElement {
       name: "Statistic"
+      image: "qrc:/img/image/chart.png"
     }
     ListElement {
       name: "Notifys"
+      image: "qrc:/img/image/notification.png"
     }
   }
-  Component {
-      id: highlight
-      Rectangle {
-          width: 180; height: 40
-          color: "lightsteelblue"; radius: 5
-          //y: lst.currentItem.y
-          Behavior on y {
-              SpringAnimation {
-                  spring: 3
-                  damping: 0.2
-              }
-          }
-      }
-  }
-  Rectangle {
+
+  Item {
     id: lst
     anchors.fill: parent
     ListView {
+      id: menu
       width: 200
       height: 200
       spacing: 3
@@ -52,19 +46,39 @@ ApplicationWindow {
       anchors.left: parent.left
       anchors.topMargin: 80
       anchors.leftMargin: 50
-
+      focus: true
       model: menuModel
       currentIndex: 0
-      highlight: highlight
+      highlight: Rectangle {
+        color: "lightgray"
+        radius: 5
+        opacity: 0.7
+      }
 
-      delegate: Rectangle {
+      delegate: Item {
         width: 140
         height: 30
-        radius: 4
-        border.color: "Gray"
-        border.width: 2
+
+        Image {
+          width: 22
+          height: 22
+          anchors.left: parent.left
+          anchors.leftMargin: 10
+          anchors.verticalCenter: parent.verticalCenter
+
+          source: image
+        }
+
         Text {
           text: name
+          anchors.centerIn: parent
+        }
+
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            menu.currentIndex = index;
+          }
         }
       }
     }
