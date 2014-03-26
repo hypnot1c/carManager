@@ -7,6 +7,8 @@
         <file>qml/carManager/windows/regWindow.qml</file>
         <file>qml/carManager/forms/infoForm.qml</file>
         <file>qml/carManager/forms/regForm.qml</file>
+        <file>qml/carManager/temp123/menu.qml</file>
+        <file>qml/carManager/temp123/serviceContent.qml</file>
     </qresource>
     <qresource prefix="/img">
         <file>image/car.png</file>

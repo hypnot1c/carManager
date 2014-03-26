@@ -52,4 +52,6 @@ OTHER_FILES += \
     qml/carManager/forms/regForm.qml \
     qml/carManager/forms/infoForm.qml \
     qml/carManager/windows/mainWindow.qml \
-    qml/carManager/windows/loginWindow.qml
+    qml/carManager/windows/loginWindow.qml \
+    qml/carManager/temp123/menu.qml \
+    qml/carManager/temp123/serviceContent.qml

@@ -2,6 +2,8 @@ import QtQuick 2.2
 import QtQuick.Window 2.1
 import QtQuick.Controls 1.1
 
+import "temp123"
+
 import "components"
 import "windows"
 
@@ -11,34 +13,22 @@ ApplicationWindow {
   height: 500
   visible: true
 
-
-
-  ListModel {
+  Loader {
     id: menuModel
-    ListElement {
-      name: "Service"
-      image: "qrc:/img/image/wrench.png"
-    }
-    ListElement {
-      name: "Fuel"
-      image: "qrc:/img/image/fuel.png"
-    }
-    ListElement {
-      name: "Statistic"
-      image: "qrc:/img/image/chart.png"
-    }
-    ListElement {
-      name: "Notifys"
-      image: "qrc:/img/image/notification.png"
-    }
+    source: "temp123/menu.qml"
+  }
+  Loader {
+    id: contentModel
+    source: "temp123/serviceContent.qml"
   }
 
   Item {
     id: lst
     anchors.fill: parent
+
     ListView {
       id: menu
-      width: 200
+      width: 150
       height: 200
       spacing: 3
 
@@ -46,9 +36,11 @@ ApplicationWindow {
       anchors.topMargin: 80
       anchors.left: parent.left
       anchors.leftMargin: 50
+
       focus: true
-      model: menuModel
+      model: menuModel.item
       currentIndex: 0
+
       highlight: Rectangle {
         color: "lightgray"
         radius: 5
@@ -76,56 +68,10 @@ ApplicationWindow {
 
         MouseArea {
           anchors.fill: parent
-          onClicked: {
-            menu.currentIndex = index;
-          }
+          onClicked: menu.currentIndex = index
         }
       }
     }
-
-    ListModel {
-      id: serviceModel
-
-      ListElement {
-        date: "25.03.2014"
-
-        services: [
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          },
-          ListElement {
-            name: "Замена ГРМ"
-            cost: 3130.55
-          }
-        ]
-      }
-    }
-
 
     ListView {
       id: serviceContent
@@ -136,24 +82,27 @@ ApplicationWindow {
       anchors.top: parent.top
       anchors.topMargin: 80
       anchors.left: menu.right
-      anchors.leftMargin: 20
+      anchors.leftMargin: 10
 
-      model: serviceModel
+      model: contentModel.item
 
       delegate: Item {
         width: parent.width
-        height: 400
+        height: 150
 
         Column {
           width: parent.width
+
           Text {
             text: qsTr(date)
           }
+
           Rectangle {
             width: parent.width
             height: 4
             color: "Green"
           }
+
           Grid {
             columns: 5
             rows: 5
@@ -161,18 +110,21 @@ ApplicationWindow {
             Repeater {
               model: services
               delegate: Rectangle {
-                width: 80
-                height: 60
+                  width: 80
+                  height: 60
+                  radius: 6
 
-                Text {
-                  text: name
-                }
+                  border.color: "Lightblue"
+                  border.width: 1
+                  Text {
+                    text: name
+                  }
 
-                Text {
-                  text: cost
-                  anchors.bottom: parent.bottom
+                  Text {
+                    text: cost
+                    anchors.bottom: parent.bottom
+                  }
                 }
-              }
             }
           }
         }
