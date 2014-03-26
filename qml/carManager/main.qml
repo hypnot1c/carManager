@@ -87,9 +87,42 @@ ApplicationWindow {
       id: serviceModel
 
       ListElement {
-        name: "Замена ГРМ"
         date: "25.03.2014"
-        cost: 3130.55
+
+        services: [
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          },
+          ListElement {
+            name: "Замена ГРМ"
+            cost: 3130.55
+          }
+        ]
       }
     }
 
@@ -121,18 +154,24 @@ ApplicationWindow {
             height: 4
             color: "Green"
           }
-          Row {
-            Rectangle {
-              width: 80
-              height: 60
+          Grid {
+            columns: 5
+            rows: 5
+            spacing: 4
+            Repeater {
+              model: services
+              delegate: Rectangle {
+                width: 80
+                height: 60
 
-              Text {
-                text: name
-              }
+                Text {
+                  text: name
+                }
 
-              Text {
-                text: cost
-                anchors.bottom: parent.bottom
+                Text {
+                  text: cost
+                  anchors.bottom: parent.bottom
+                }
               }
             }
           }
