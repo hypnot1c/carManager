@@ -43,8 +43,8 @@ ApplicationWindow {
       spacing: 3
 
       anchors.top: parent.top
-      anchors.left: parent.left
       anchors.topMargin: 80
+      anchors.left: parent.left
       anchors.leftMargin: 50
       focus: true
       model: menuModel
@@ -78,6 +78,63 @@ ApplicationWindow {
           anchors.fill: parent
           onClicked: {
             menu.currentIndex = index;
+          }
+        }
+      }
+    }
+
+    ListModel {
+      id: serviceModel
+
+      ListElement {
+        name: "Замена ГРМ"
+        date: "25.03.2014"
+        cost: 3130.55
+      }
+    }
+
+
+    ListView {
+      id: serviceContent
+
+      width: 400
+      height: parent.height
+
+      anchors.top: parent.top
+      anchors.topMargin: 80
+      anchors.left: menu.right
+      anchors.leftMargin: 20
+
+      model: serviceModel
+
+      delegate: Item {
+        width: parent.width
+        height: 400
+
+        Column {
+          width: parent.width
+          Text {
+            text: qsTr(date)
+          }
+          Rectangle {
+            width: parent.width
+            height: 4
+            color: "Green"
+          }
+          Row {
+            Rectangle {
+              width: 80
+              height: 60
+
+              Text {
+                text: name
+              }
+
+              Text {
+                text: cost
+                anchors.bottom: parent.bottom
+              }
+            }
           }
         }
       }
